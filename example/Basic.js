@@ -91,7 +91,8 @@ class Basic extends Component {
     }
 
     eventClicked = (schedulerData, event) => {
-        alert(`You just clicked an event: {id: ${event.id}, title: ${event.title}}`);
+        // alert(`You just clicked an event: {id: ${event.id}, title: ${event.title}}`);
+        console.log(`You just clicked an event: {id: ${event.id}, title: ${event.title}}`);
     };
 
     ops1 = (schedulerData, event) => {
@@ -146,30 +147,33 @@ class Basic extends Component {
     }
 
     updateEventStart = (schedulerData, event, newStart) => {
-        if (confirm(`Do you want to adjust the start of the event? {eventId: ${event.id}, eventTitle: ${event.title}, newStart: ${newStart}}`)) {
-            schedulerData.updateEventStart(event, newStart);
-        }
+        // if (confirm(`Do you want to adjust the start of the event? {eventId: ${event.id}, eventTitle: ${event.title}, newStart: ${newStart}}`)) {
+        schedulerData.updateEventStart(event, newStart);
+        // }
         this.setState({
             viewModel: schedulerData
         })
+        console.log("Start of the event adjusted " + event.id, newStart)
     }
 
     updateEventEnd = (schedulerData, event, newEnd) => {
-        if (confirm(`Do you want to adjust the end of the event? {eventId: ${event.id}, eventTitle: ${event.title}, newEnd: ${newEnd}}`)) {
-            schedulerData.updateEventEnd(event, newEnd);
-        }
+        // if (confirm(`Do you want to adjust the end of the event? {eventId: ${event.id}, eventTitle: ${event.title}, newEnd: ${newEnd}}`)) {
+        schedulerData.updateEventEnd(event, newEnd);
+        // }
         this.setState({
             viewModel: schedulerData
         })
+        console.log("End of the event adjusted " + event.id, newEnd)
     }
 
     moveEvent = (schedulerData, event, slotId, slotName, start, end) => {
-        if (confirm(`Do you want to move the event? {eventId: ${event.id}, eventTitle: ${event.title}, newSlotId: ${slotId}, newSlotName: ${slotName}, newStart: ${start}, newEnd: ${end}`)) {
-            schedulerData.moveEvent(event, slotId, slotName, start, end);
-            this.setState({
-                viewModel: schedulerData
-            })
-        }
+        // if (confirm(`Do you want to move the event? {eventId: ${event.id}, eventTitle: ${event.title}, newSlotId: ${slotId}, newSlotName: ${slotName}, newStart: ${start}, newEnd: ${end}`)) {
+        schedulerData.moveEvent(event, slotId, slotName, start, end);
+        this.setState({
+            viewModel: schedulerData
+        })
+        console.log("Event moved " + event, slotId, start, end)
+        // }
     }
 
     onScrollRight = (schedulerData, schedulerContent, maxScrollLeft) => {
