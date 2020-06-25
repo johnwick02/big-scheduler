@@ -103,27 +103,46 @@ class Basic extends Component {
     };
 
     newEvent = (schedulerData, slotId, slotName, start, end, type, item) => {
-        if (confirm(`Do you want to create a new event? {slotId: ${slotId}, slotName: ${slotName}, start: ${start}, end: ${end}, type: ${type}, item: ${item}}`)) {
+        // if (confirm(`Do you want to create a new event? {slotId: ${slotId}, slotName: ${slotName}, start: ${start}, end: ${end}, type: ${type}, item: ${item}}`)) {
 
-            let newFreshId = 0;
-            schedulerData.events.forEach((item) => {
-                if (item.id >= newFreshId)
-                    newFreshId = item.id + 1;
-            });
+        //     let newFreshId = 0;
+        //     schedulerData.events.forEach((item) => {
+        //         if (item.id >= newFreshId)
+        //             newFreshId = item.id + 1;
+        //     });
 
-            let newEvent = {
-                id: newFreshId,
-                title: 'New event you just created',
-                start: start,
-                end: end,
-                resourceId: slotId,
-                bgColor: 'purple'
-            }
-            schedulerData.addEvent(newEvent);
-            this.setState({
-                viewModel: schedulerData
-            })
+        //     let newEvent = {
+        //         id: newFreshId,
+        //         title: 'New event you just created',
+        //         start: start,
+        //         end: end,
+        //         resourceId: slotId,
+        //         bgColor: 'purple'
+        //     }
+        //     schedulerData.addEvent(newEvent);
+        //     this.setState({
+        //         viewModel: schedulerData
+        //     })
+        // }
+        let newFreshId = 0;
+        schedulerData.events.forEach((item) => {
+            if (item.id >= newFreshId)
+                newFreshId = item.id + 1;
+        });
+
+        let newEvent = {
+            id: newFreshId,
+            title: 'New event you just created',
+            start: start,
+            end: end,
+            resourceId: slotId,
+            bgColor: 'purple'
         }
+        schedulerData.addEvent(newEvent);
+        this.setState({
+            viewModel: schedulerData
+        })
+        console.log("New event created" + slotId, slotName, start, end)
     }
 
     updateEventStart = (schedulerData, event, newStart) => {
