@@ -142,7 +142,7 @@ class Basic extends Component {
         this.setState({
             viewModel: schedulerData
         })
-        console.log("New event created" + slotId, slotName, start, end)
+        console.log("New event slot created" + slotId, slotName, start, end)
     }
 
     updateEventStart = (schedulerData, event, newStart) => {
